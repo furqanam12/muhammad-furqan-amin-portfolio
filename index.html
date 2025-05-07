@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Furqan Amin | Software Developer</title>
+    <meta name="description" content="Portfolio website of Muhammad Furqan Amin, an aspiring software developer specializing in web development.">
+    <meta name="keywords" content="Portfolio, Software Developer, Web Development, JavaScript, Python, Projects">
+    <meta name="author" content="Muhammad Furqan Amin">
+    <meta name="robots" content="index, follow">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#8B5CF6',
+                        secondary: '#1F2937',
+                        accent: '#EC4899',
+                        dark: '#111827',
+                    },
+                    animation: {
+                        'gradient-x': 'gradient-x 15s ease infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fade-in 1s ease forwards',
+                    },
+                    keyframes: {
+                        'gradient-x': {
+                            '0%, 100%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            }
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        'fade-in': {
+                            '0%': { opacity: 0 },
+                            '100%': { opacity: 1 }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .cursor-dot {
+            width: 10px;
+            height: 10px;
+            background: #8B5CF6;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+            transition: transform 0.2s;
+        }
+        .cursor-outline {
+            width: 30px;
+            height: 30px;
+            border: 2px solid #8B5CF6;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+            transition: transform 0.6s;
+        }
+        /* Page transition fade-in */
+        body {
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+        body.loaded {
+            opacity: 1;
+        }
+        /* Navigation link hover and active */
+        .nav-link {
+            color: #f3f4f6;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: #8B5CF6;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        /* Card hover effect */
+        .group:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 15px rgba(139, 92, 246, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-dark text-gray-100 font-inter">
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Navigation -->
+    <header class="fixed top-0 w-full z-50 bg-secondary/80 backdrop-blur-lg border-b border-white/10 dark:bg-gray-900 dark:border-gray-700 transition-colors duration-500">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent" data-aos="fade-right">
+                <span>F</span>urqan <span>A</span>min
+            </div>
+            <div class="hidden md:flex space-x-8" data-aos="fade-left">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#blog" class="nav-link">Blog</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden bg-dark">
+        <div class="text-center z-10 max-w-4xl px-6">
+            <h1 class="text-7xl font-extrabold mb-6 tracking-wide leading-tight relative inline-block text-white drop-shadow-lg" data-aos="zoom-in">
+                <span class="bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 bg-clip-text text-transparent">
+                    Muhammad Furqan Amin
+                </span>
+                <span class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 rounded-full opacity-80 animate-pulse"></span>
+            </h1>
+            <div class="text-4xl mb-12 font-semibold text-pink-300 drop-shadow-md" data-aos="fade-up" data-aos-delay="300">
+                <span id="typed-text"></span>
+            </div>
+            <div class="animate-bounce mt-20" data-aos="fade-up" data-aos-delay="600">
+                <div class="w-10 h-14 mx-auto border-4 border-pink-400 rounded-full flex items-start justify-center">
+                    <div class="w-4 h-4 mt-4 bg-pink-400 rounded-full animate-bounce"></div>
+                </div>
+                <p class="mt-3 text-sm text-pink-300 tracking-wider">Scroll Down</p>
+            </div>
+        </div>
+        <!-- Animated Background -->
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5"></div>
+        <div class="absolute inset-0" style="background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.15), transparent), radial-gradient(circle at bottom left, rgba(236, 72, 153, 0.15), transparent)"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6">
+        <h2 class="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent" data-aos="fade-up">
+            About Me
+        </h2>
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
+            <div class="relative group" data-aos="fade-right" data-aos-duration="1200">
+                <div class="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-2xl blur opacity-25 group-hover:opacity-75 transition-all duration-1000"></div>
+                <div class="relative overflow-hidden rounded-2xl">
+<img 
+    src="https://scontent.flyp16-1.fna.fbcdn.net/v/t39.30808-6/474303410_1178664233825057_7510787471869853845_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeE8M_Jl5MApMD9Y5-xQm8qDKj__-H76Wy8qP__4fvpbLxxyPP2QacXnRXPMFb6V9Iy3ymCNa3BTEYJdH1svp0Jm&_nc_ohc=E9ywVZCcyWAQ7kNvwEB-Ttg&_nc_oc=AdkU0CbFn4qY0iUvfHmN3NPQwi0Y-NgOOPcZTtDDEmCCkZRmS3BcCUKN2nSA9u8oO03aZAGWfnXuqZBvrTIHq-TV&_nc_zt=23&_nc_ht=scontent.flyp16-1.fna&_nc_gid=uQKVxBHGCaYVfA4_dh0gjg&oh=00_AfJmeBhDfGomtnMh4qBYK_Ac3zwaL_zQB16kiw3s_YWoJQ&oe=6820B390" 
+    alt="Muhammad Furqan Amin" 
+    class="w-full h-[500px] object-contain object-top shadow-xl transition-transform duration-700 group-hover:scale-110"
+    onerror="this.onerror=null; this.src='https://via.placeholder.com/500x500.png?text=Furqan+Amin'"
+>
+                </div>
+            </div>
+            <div class="space-y-6" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">
+                <p class="text-lg text-gray-300">
+                    Hello! I'm an aspiring Software Developer with a strong foundation in programming fundamentals and a passion for learning new technologies. I'm currently focusing on web development and actively building projects to gain hands-on experience.
+                </p>
+                <div class="p-6 bg-secondary/50 rounded-xl backdrop-blur-lg border border-white/10 hover:transform hover:-translate-y-2 transition-all duration-500 hover:bg-secondary/70 hover:border-primary/30">
+                    <h3 class="text-xl font-semibold text-primary mb-4">Education</h3>
+                    <div class="flex justify-between items-center">
+                        <span class="font-medium">Bachelor's in Software Engineering</span>
+                        <span class="text-accent">2024 - 2028 (On-going)</span>
+                    </div>
+                </div>
+                <div class="p-6 bg-secondary/50 rounded-xl backdrop-blur-lg border border-white/10 hover:transform hover:-translate-y-2 transition-all duration-500 hover:bg-secondary/70 hover:border-primary/30">
+                    <h3 class="text-xl font-semibold text-primary mb-4">Certifications</h3>
+                    <div class="grid grid-cols-4 gap-6">
+                        <div class="p-4 bg-secondary/50 rounded-lg border border-white/10 hover:shadow-lg hover:border-primary transition duration-300 flex items-center justify-center">
+                            <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="Certificate 1" class="h-20 object-contain" />
+                        </div>
+                        <div class="p-4 bg-secondary/50 rounded-lg border border-white/10 hover:shadow-lg hover:border-primary transition duration-300 flex items-center justify-center">
+                            <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="Certificate 2" class="h-20 object-contain" />
+                        </div>
+                        <div class="p-4 bg-secondary/50 rounded-lg border border-white/10 hover:shadow-lg hover:border-primary transition duration-300 flex items-center justify-center">
+                            <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="Certificate 3" class="h-20 object-contain" />
+                        </div>
+                        <div class="p-4 bg-secondary/50 rounded-lg border border-white/10 hover:shadow-lg hover:border-primary transition duration-300 flex items-center justify-center">
+                            <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="Certificate 4" class="h-20 object-contain" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-6 bg-secondary">
+        <h2 class="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent" data-aos="fade-up">
+            Technical Skills
+        </h2>
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
+            <div class="space-y-8" data-aos="fade-up">
+                <h3 class="text-2xl font-semibold mb-6">Programming Languages</h3>
+                <div class="space-y-6">
+                    <div class="p-6 bg-dark/50 rounded-xl backdrop-blur-sm border border-white/10">
+                        <div class="flex justify-between mb-2">
+                            <span>HTML & CSS</span>
+                            <span class="text-primary">75%</span>
+                        </div>
+                        <div class="h-2 bg-dark/50 rounded-full">
+                            <div class="h-full w-3/4 bg-gradient-to-r from-primary to-accent rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-dark/50 rounded-xl backdrop-blur-sm border border-white/10">
+                        <div class="flex justify-between mb-2">
+                            <span>JavaScript</span>
+                            <span class="text-primary">70%</span>
+                        </div>
+                        <div class="h-2 bg-dark/50 rounded-full">
+                            <div class="h-full w-[70%] bg-gradient-to-r from-primary to-accent rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-dark/50 rounded-xl backdrop-blur-sm border border-white/10">
+                        <div class="flex justify-between mb-2">
+                            <span>Python</span>
+                            <span class="text-primary">65%</span>
+                        </div>
+                        <div class="h-2 bg-dark/50 rounded-full">
+                            <div class="h-full w-[65%] bg-gradient-to-r from-primary to-accent rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-dark/50 rounded-xl backdrop-blur-sm border border-white/10">
+                        <div class="flex justify-between mb-2">
+                            <span>Java</span>
+                            <span class="text-primary">50%</span>
+                        </div>
+                        <div class="h-2 bg-dark/50 rounded-full">
+                            <div class="h-full w-1/2 bg-gradient-to-r from-primary to-accent rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="space-y-8" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="text-2xl font-semibold mb-6">Tools & Technologies</h3>
+                <div class="space-y-6">
+                    <div class="p-6 bg-dark/50 rounded-xl backdrop-blur-sm border border-white/10">
+                        <div class="flex justify-between mb-2">
+                            <span>Git & GitHub</span>
+                            <span class="text-primary">70%</span>
+                        </div>
+                        <div class="h-2 bg-dark/50 rounded-full">
+                            <div class="h-full w-[70%] bg-gradient-to-r from-primary to-accent rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-dark/50 rounded-xl backdrop-blur-sm border border-white/10">
+                        <div class="flex justify-between mb-2">
+                            <span>VS Code</span>
+                            <span class="text-primary">75%</span>
+                        </div>
+                        <div class="h-2 bg-dark/50 rounded-full">
+                            <div class="h-full w-3/4 bg-gradient-to-r from-primary to-accent rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-dark/50 rounded-xl backdrop-blur-sm border border-white/10">
+                        <div class="flex justify-between mb-2">
+                            <span>Problem Solving</span>
+                            <span class="text-primary">65%</span>
+                        </div>
+                        <div class="h-2 bg-dark/50 rounded-full">
+                            <div class="h-full w-[65%] bg-gradient-to-r from-primary to-accent rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-6 bg-secondary">
+        <h2 class="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent" data-aos="fade-up">
+            My Projects
+        </h2>
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-10">
+            <article class="bg-secondary/50 rounded-xl backdrop-blur-sm border border-white/10 p-6 transition-transform duration-700 hover:-translate-y-6 hover:shadow-2xl hover:scale-[1.05]" data-aos="fade-up">
+                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" alt="Personal Portfolio" class="w-full h-52 object-cover rounded-lg mb-6 transition-transform duration-700">
+                <h3 class="text-2xl font-semibold mb-3 text-white drop-shadow-md">Personal Portfolio Website</h3>
+                <p class="text-gray-400 mb-6 leading-relaxed">A responsive portfolio website built with HTML, CSS, and JavaScript. Features smooth animations and modern design.</p>
+                <a href="#" class="text-primary hover:underline font-semibold">View Code</a>
+            </article>
+            <article class="bg-secondary/50 rounded-xl backdrop-blur-sm border border-white/10 p-6 transition-transform duration-700 hover:-translate-y-6 hover:shadow-2xl hover:scale-[1.05]" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Weather App" class="w-full h-52 object-cover rounded-lg mb-6 transition-transform duration-700">
+                <h3 class="text-2xl font-semibold mb-3 text-white drop-shadow-md">Weather App</h3>
+                <p class="text-gray-400 mb-6 leading-relaxed">A simple weather application that fetches data from a weather API. Built while learning API integration.</p>
+                <a href="#" class="text-primary hover:underline font-semibold">View Code</a>
+            </article>
+            <article class="bg-secondary/50 rounded-xl backdrop-blur-sm border border-white/10 p-6 transition-transform duration-700 hover:-translate-y-6 hover:shadow-2xl hover:scale-[1.05]" data-aos="fade-up" data-aos-delay="400">
+                <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f?auto=format&fit=crop&w=400&q=80" alt="Todo App" class="w-full h-52 object-cover rounded-lg mb-6 transition-transform duration-700">
+                <h3 class="text-2xl font-semibold mb-3 text-white drop-shadow-md">Todo List App</h3>
+                <p class="text-gray-400 mb-6 leading-relaxed">A Python command-line todo list application. Features task management and data persistence.</p>
+                <a href="#" class="text-primary hover:underline font-semibold">View Code</a>
+            </article>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-20 px-6 bg-secondary">
+        <h2 class="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent" data-aos="fade-up">
+            Latest Blog Posts
+        </h2>
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12">
+            <article class="bg-secondary/50 rounded-xl backdrop-blur-sm border border-white/10 p-8 transition-transform duration-700 hover:-translate-y-8 hover:shadow-2xl hover:scale-[1.07]" data-aos="fade-up">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80" alt="Blog Post 1" class="w-full h-56 object-cover rounded-lg mb-6 transition-transform duration-700">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-sm text-pink-400 font-semibold uppercase tracking-wider">Web Development</span>
+                    <span class="text-xs text-gray-400">March 15, 2024</span>
+                </div>
+                <h3 class="text-2xl font-semibold mb-3 text-white drop-shadow-md">My First Web Development Project</h3>
+                <p class="text-gray-400 mb-6 leading-relaxed">Learning experience and challenges faced while building a responsive portfolio website using HTML, CSS, and JavaScript...</p>
+                <a href="#" class="text-primary hover:underline font-semibold">Read More →</a>
+            </article>
+            <article class="bg-secondary/50 rounded-xl backdrop-blur-sm border border-white/10 p-8 transition-transform duration-700 hover:-translate-y-8 hover:shadow-2xl hover:scale-[1.07]" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=400&q=80" alt="Blog Post 2" class="w-full h-56 object-cover rounded-lg mb-6 transition-transform duration-700">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-sm text-pink-400 font-semibold uppercase tracking-wider">Python</span>
+                    <span class="text-xs text-gray-400">March 10, 2024</span>
+                </div>
+                <h3 class="text-2xl font-semibold mb-3 text-white drop-shadow-md">Learning Python Programming</h3>
+                <p class="text-gray-400 mb-6 leading-relaxed">My journey through Python basics, including data structures, functions, and my first command-line application...</p>
+                <a href="#" class="text-primary hover:underline font-semibold">Read More →</a>
+            </article>
+            <article class="bg-secondary/50 rounded-xl backdrop-blur-sm border border-white/10 p-8 transition-transform duration-700 hover:-translate-y-8 hover:shadow-2xl hover:scale-[1.07]" data-aos="fade-up" data-aos-delay="400">
+                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" alt="Blog Post 3" class="w-full h-56 object-cover rounded-lg mb-6 transition-transform duration-700">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-sm text-pink-400 font-semibold uppercase tracking-wider">Version Control</span>
+                    <span class="text-xs text-gray-400">March 5, 2024</span>
+                </div>
+                <h3 class="text-2xl font-semibold mb-3 text-white drop-shadow-md">Getting Started with Git and GitHub</h3>
+                <p class="text-gray-400 mb-6 leading-relaxed">Understanding version control basics and collaborating on open source projects as a beginner...</p>
+                <a href="#" class="text-primary hover:underline font-semibold">Read More →</a>
+            </article>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 bg-secondary">
+        <h2 class="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent" data-aos="fade-up">
+            Get In Touch
+        </h2>
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
+            <div class="space-y-8" data-aos="fade-right">
+                <div class="p-6 bg-dark/50 rounded-xl backdrop-blur-sm border border-white/10">
+                    <i class="fas fa-envelope text-2xl text-primary mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Email</h3>
+                    <p class="text-gray-400">aminfurqan631@gmail.com</p>
+                </div>
+                <div class="p-6 bg-dark/50 rounded-xl backdrop-blur-sm border border-white/10">
+                    <i class="fas fa-phone text-2xl text-primary mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Phone</h3>
+                    <p class="text-gray-400">+923287496826</p>
+                </div>
+                <div class="p-6 bg-dark/50 rounded-xl backdrop-blur-sm border border-white/10">
+                    <i class="fas fa-location-dot text-2xl text-primary mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Location</h3>
+                    <p class="text-gray-400">Sahiwal, Punjab, Pakistan</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://github.com/furqanam12/fuki" target="_blank" class="text-2xl text-gray-400 hover:text-primary transition-colors duration-300">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/furqan-amin-b41a672b9/" target="_blank" class="text-2xl text-gray-400 hover:text-primary transition-colors duration-300">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="#" class="text-2xl text-gray-400 hover:text-primary transition-colors duration-300">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+            <form class="space-y-6" data-aos="fade-left">
+                <div class="relative">
+                    <input type="text" required class="w-full bg-dark/50 rounded-lg border border-white/10 px-6 py-4 focus:outline-none focus:border-primary transition duration-300">
+                    <label class="absolute left-6 top-4 text-gray-400 transition duration-300">Name</label>
+                </div>
+                <div class="relative">
+                    <input type="email" required class="w-full bg-dark/50 rounded-lg border border-white/10 px-6 py-4 focus:outline-none focus:border-primary transition duration-300">
+                    <label class="absolute left-6 top-4 text-gray-400 transition duration-300">Email</label>
+                </div>
+                <div class="relative">
+                    <textarea required class="w-full bg-dark/50 rounded-lg border border-white/10 px-6 py-4 h-32 focus:outline-none focus:border-primary transition duration-300"></textarea>
+                    <label class="absolute left-6 top-4 text-gray-400 transition duration-300">Message</label>
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-primary to-accent text-white py-4 px-8 rounded-lg hover:opacity-90 transition duration-300 flex items-center justify-center space-x-2">
+                    <span>Send Message</span>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-6 border-t border-white/10">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-4">
+                <span>F</span>urqan <span>A</span>min
+            </div>
+            <p class="text-gray-400">&copy; 2024 Muhammad Furqan Amin. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
